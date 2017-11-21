@@ -6,14 +6,23 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/',//首页介绍
       name: 'home',
       component: resolve => require(['../pages/index.vue'], resolve)
     },
     {
-      path: '/register',
+      path: '/register',//登陆注册
       name: 'login',
       component: resolve => require(['../pages/login.vue'], resolve)
+    },
+    {
+      path: '/manage',//后台管理
+      name: 'manage',
+      component: resolve => require(['../pages/manage.vue'], resolve),
+      children: [{
+        path: 'infoInput', //信息录入
+        component: resolve => require(['../pages/infoInput.vue'], resolve),
+    }]
     }
   ]
 })

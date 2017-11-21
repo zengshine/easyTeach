@@ -4,15 +4,16 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 import VueBus from 'vue-bus'
 import store from './store'
 import ElementUI from 'element-ui'
 import router from './router'
 import App from './App'
 import commom from '../static/js/commom'
+import '../mock/index'
+
 require('../static/js/swiper.min')
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../static/font-awesome/css/font-awesome.min.css'
 import '../static/css/swiper.css'
@@ -21,7 +22,7 @@ Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.use(ElementUI)
 Vue.use(VueBus)
-Vue.use(VueRouter, VueAxios, axios, commom)
+Vue.use(VueRouter, axios, commom)
 Vue.prototype.$axios = axios
 Vue.prototype.commom = commom
 

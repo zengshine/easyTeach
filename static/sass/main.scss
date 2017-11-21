@@ -1,5 +1,6 @@
 @import '../sass/variable.scss';
 @import '../sass/adapter.scss';
+@import '../sass/common.scss';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -37,6 +38,11 @@ nav {
     z-index: 10;
     transition: all;
   }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
   position: absolute;
   width: 100%;
   line-height: 53px;
@@ -643,3 +649,83 @@ footer {
   }
 }
 
+// 后台管理页面
+.managepage{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  .left-part-nav{
+    flex: 0 0 250px;
+    background:rgba(28,31,40,1);
+  }
+  .right-part-content{
+    flex: 1 1;
+    .left-right-inline-layout{
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      .left-part{
+        display:flex;
+      }
+      .right-part{
+        display: flex;
+        .right-part-item{
+          padding: 0 20px;
+          border-left:1px solid rgba(211, 211, 211, .15)
+        }
+    }
+  }
+  .user-info{
+    img{
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+  }
+  .info-dimension{
+    .item{
+      cursor: pointer;
+      padding: 0 15px;
+      span{
+        padding: 5px 10px;
+      }
+      span.selected{
+        background: rgb(55, 163, 230);
+        border-radius:5px;
+        color: white;
+      }
+    }
+  }
+  .add-btn{
+    margin-right:15px;
+    cursor: pointer;
+    span{
+      padding: 6px 9px;
+      color: white;
+      background: rgb(55, 163, 230);
+      border-radius:50%;
+    }
+  }
+  .dropdown-filter{
+    .item{
+      width: 120px;
+      margin-left:20px
+    }
+  }
+  .count-info{
+    .item{
+      text-align: center;
+      margin-right:25px;
+      .number{
+        font-size: 18px;
+        line-height: 30px;
+      }
+      .des{
+        font-size: 10px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+}
