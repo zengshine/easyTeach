@@ -655,8 +655,46 @@ footer {
   flex-flow: row nowrap;
   align-items: stretch;
   .left-part-nav{
-    flex: 0 0 250px;
+    flex: 0 0 200px;
     background:rgba(28,31,40,1);
+    .logo{
+      text-align: center;
+      margin-top: 15px;
+      div{
+        display: inline-block;
+      }
+      .img-ct{
+        width: 74px;
+        height: 74px;
+        background-image:url("../../static/images/manage/教育机构logo.png")
+      }
+      .name-ct{
+        color: white;
+        font-size: 16px;
+        padding: 10px 0px;
+      }
+    }
+    .menu-ct{
+      margin-top:15px;
+      .menu-item{
+        text-align: left;
+        padding-left:20px;
+        line-height: 45px;
+        div{
+          display: inline-block;
+        }
+        .item-icon-ct{
+          margin-right:10px;
+          img{
+            width: 23px;
+            height: 20px;
+          }
+        }
+        .item-text-ct{
+          color: rgba(148,155,175,1);
+        }
+      }
+    }
   }
   .right-part-content{
     flex: 1 1;
@@ -719,11 +757,50 @@ footer {
       margin-right:25px;
       .number{
         font-size: 18px;
-        line-height: 30px;
+        line-height: 40px;
       }
       .des{
         font-size: 10px;
         line-height: 20px;
+        margin-top: -5px;
+      }
+    }
+  }
+  .pagination-ct{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+  }
+  .table-ct{
+    .table-column{
+      div{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .name-img-ct{
+         img{
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+         }
+      }
+      .name-info-ct{
+        .top{
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .bottom{
+          font-size: 12px;
+        }
+      }
+      .class-item{
+        border: 1px solid lightgray;
+        display: inline-block;
+        padding: 0 2px;
+        margin:5px 2px;
+        border-radius:3px;
+        font-size: 12px;
       }
     }
   }
