@@ -43,3 +43,13 @@ div.el-loading-mask{
   background-color: rgba(0, 0, 0, .7);
 }
 /*loading mask*/
+/* 信息录入界面 */
+.infoInputForm .el-input__inner,.infoInputForm .el-date-editor.el-input,.infoInputForm .el-date-editor.el-input__inner{
+  width:120px;
+}
+.infoInputForm .el-form-item__label{
+  padding: 0 !important;
+}
+.infoInputForm  .el-textarea{
+  width: 390px;
+}
