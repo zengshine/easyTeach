@@ -655,7 +655,8 @@ footer {
   flex-flow: row nowrap;
   align-items: stretch;
   .left-part-nav{
-    flex: 0 0 200px;
+    flex: 0 0 250px;
+    position: relative;
     background:rgba(28,31,40,1);
     .logo{
       text-align: center;
@@ -681,9 +682,9 @@ footer {
           background-color: rgba(58, 62, 73, 0.75);
           cursor: pointer;
         }
-        text-align: left;
-        padding-left:20px;
-        line-height: 45px;
+        text-align: center;
+        line-height: 60px;
+        font-size: 18px;
         div{
           display: inline-block;
           vertical-align: middle;
@@ -702,21 +703,89 @@ footer {
         }
       }
     }
+    .page-tip-ct{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      .manage-page-tips{
+        display: inline-block;
+        position: relative;
+        width: 164px;
+        height: 269px;
+        border-radius:7px;
+        background-image: url('../images/manage/提醒background.png');
+        background-size:contain;
+        background-position:center;
+        padding-top: 95px;
+        .tips-close-btn{
+          position: absolute;
+          top: -1px;
+          right: 2px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        .page-tips-text{
+          font-size: 12px;
+          padding: 0 16px;
+          line-height:22px;
+          color: #867272;
+        }
+        .page-tips-btn{
+           span{
+             background: rgba(51,56,72,1);
+             display: inline-block;
+             width: 77px;
+             line-height: 26px;
+             color: white;
+             font-weight: bold;
+             border-radius: 5px;
+             display: none;
+           }
+        }
+      }
+      .page-version{
+        line-height: 50px;
+        font-size:10px;
+        font-family:MicrosoftYaHei-Bold;
+        color:rgba(91,99,123,1);
+      }
+    }
   }
   .right-part-content{
     flex: 1 1;
+    background: rgba(211, 211, 211, .55);
     .left-right-inline-layout{
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
+      align-items: center;
       .left-part{
         display:flex;
       }
       .right-part{
         display: flex;
         .right-part-item{
+          cursor: pointer;
+          position: relative;
+          &:hover{
+            background-color:rgba(211, 211, 211, .15);
+          }
           padding: 0 20px;
-          border-left:1px solid rgba(211, 211, 211, .15)
+          border-left:1px solid rgba(211, 211, 211, .15);
+          .manage-bell-count{
+            display: inline-block;
+            position: absolute;
+            border-radius: 50%;
+            background: red;
+            color: white;
+            height: 15px;
+            line-height: 15px;
+            padding: 0px 5px;
+            top: 10px;
+            right: 5px;
+            font-size: 10px;
+          }
         }
     }
   }
@@ -728,48 +797,72 @@ footer {
       margin-left: 5px;
     }
   }
-  .info-dimension{
-    .item{
-      cursor: pointer;
-      padding: 0 15px;
-      span{
-        padding: 5px 10px;
+  .dimension-ct{
+    margin: 15px;
+    border-radius: 10px;
+  }
+  .filter-ct{
+    border-radius:5px 5px 0 0;
+    .dropdown-filter{
+      .item{
+        width: 140px;
+        margin-left:20px
       }
-      span.selected{
+    }
+    .count-info{
+      .item{
+        text-align: center;
+        margin-right:25px;
+        .number{
+          font-size: 18px;
+          line-height: 40px;
+        }
+        .des{
+          font-size: 10px;
+          line-height: 20px;
+          margin-top: -5px;
+        }
+      }
+    }
+  }
+  .info-dimension{
+    border-radius:6px;
+    border:1px solid lightgray;
+    box-sizing: border-box;
+    margin-left:15px;
+    margin-top:3px;//无法居中...
+    .item{
+      &:first-child{
+        border-radius: 5px 0 0 5px;
+      }
+      &:last-child{
+        border-radius: 0 5px 5px 0;
+      }
+      &:not(:first-child){
+        border-left:1px solid lightgray;
+      }
+      &.selected{
         background: rgb(55, 163, 230);
-        border-radius:5px;
         color: white;
       }
+      &:hover{
+        background: rgba(211, 211, 211, .15);
+        color: black;
+      }
+      cursor: pointer;
+      height: 32px;
+      line-height: 32px;
+      padding: 0 15px;
     }
   }
   .add-btn{
-    margin-right:15px;
+    margin-right:14px;
+    font-size: 24px;
     cursor: pointer;
     span{
-      padding: 6px 9px;
-      color: white;
-      background: rgb(55, 163, 230);
-      border-radius:50%;
-    }
-  }
-  .dropdown-filter{
-    .item{
-      width: 120px;
-      margin-left:20px
-    }
-  }
-  .count-info{
-    .item{
-      text-align: center;
-      margin-right:25px;
-      .number{
-        font-size: 18px;
-        line-height: 40px;
-      }
-      .des{
-        font-size: 10px;
-        line-height: 20px;
-        margin-top: -5px;
+      &:hover{
+        border: none;
+        color: rgb(55, 163, 230);;
       }
     }
   }
@@ -812,6 +905,7 @@ footer {
     }
   }
 }
+
 .infoInputForm{
   .contacts-ct{
     .add-relationship{

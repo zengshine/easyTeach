@@ -1,5 +1,5 @@
 .shadow-divider{
-  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .05);
 }
 .solid-divider{
   border-bottom: 1px solid rgba(0, 0, 0, .05);
@@ -11,6 +11,15 @@
 .height-50{
   height: 50px;
   line-height: 50px;
+}
+.bg-white{
+  background-color:white;
+}
+.ps-rel{
+  position: relative;
+}
+.border-radiu-bottom-5{
+  border-radius:0 0 5px 5px;
 }
 
 // 图标路径类

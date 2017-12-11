@@ -13,9 +13,28 @@
           <div class="item-text-ct">{{item.name}}</div>
         </div>
       </section>
+      <section class="page-tip-ct">
+        <div class="manage-page-tips">
+          <span class="tips-close-btn"><i class="el-icon-error"></i></span>
+          <div class="page-tips-text">
+             <span>温馨提示：<br>
+您的账户资料审核期
+即将到期，请于2017
+年11月28日前重新提
+交审核资料，以免影
+响正常使用！</span>
+          </div>
+          <div class="page-tips-btn">
+             <span>马上提交</span>
+          </div>
+        </div>
+        <div class="page-version">
+          <span>VERSION1.0</span>
+        </div>
+      </section>
     </section>
     <section class="right-part-content">
-      <section class="left-right-inline-layout shadow-divider height-60">
+      <section class="left-right-inline-layout shadow-divider height-60 bg-white ps-rel">
         <div class="left-part"></div>
         <div class="right-part">
           <div class="right-part-item">
@@ -24,6 +43,7 @@
             </span>
           </div>
           <div class="right-part-item">
+            <span class="manage-bell-count">15</span>
             <span>
               <span>
                 <i class="fa fa-bell-o"></i>
@@ -43,10 +63,11 @@
           </div>
         </div>
       </section>
-      <section class="left-right-inline-layout solid-divider height-50">
+      <!-- 维度切换 -->
+      <section class="left-right-inline-layout solid-divider height-50 bg-white">
         <div class="left-part info-dimension">
-          <div class="item">
-            <span class="selected">学生</span>
+          <div class="item selected">
+            <span>学生</span>
           </div>
           <div class="item">
             <span>教师</span>
@@ -58,12 +79,15 @@
         <div class="right-part">
           <div class="add-btn" @click="infoFormVisible=true">
             <span>
-              <i class="fa fa-plus"></i>
+              <i class="el-icon-circle-plus-outline"></i>
             </span>
           </div>
         </div>
       </section>
-      <section class="left-right-inline-layout solid-divider height-60">
+      <!-- 列表容器 -->
+      <section class="dimension-ct">
+              <!-- 过滤容器 -->
+      <section class="left-right-inline-layout filter-ct solid-divider height-60 bg-white">
         <div class="left-part dropdown-filter">
           <div class="item">
             <el-select v-model="value" placeholder="请选择年级" size="small">
@@ -83,7 +107,7 @@
               </el-option>
             </el-select>
           </div>
-          <div class="item" style="width:130px;">
+          <div class="item">
             <el-input placeholder="姓名/电话" size="small" prefix-icon="el-icon-search" v-model="value"></el-input>
           </div>
         </div>
@@ -121,12 +145,12 @@
         </div>
       </section>
       <!-- 表格内容 -->
-      <section class="table-ct">
-        <el-table :data="tableData" :max-height="tableHeight">
+      <section class="table-ct bg-white">
+        <el-table  :data="tableData" :max-height="tableHeight" @select="onSelectedTableRow" @row-click="handleRowSelected">
           <el-table-column type="selection" width="55">
           </el-table-column>
           <el-table-column label="姓名" width="180">
-            <template slot-scope="scope">
+            <template class="table-checkbox" slot-scope="scope">
               <div class="table-column">
                 <div class="name-img-ct">
                   <div>
@@ -161,13 +185,19 @@
               </div>
             </template>
           </el-table-column>
+          <el-table-column fixed="right" label="..." width="55">
+            <template slot-scope="scope">
+             <div @click="handleMore()"><i class="el-icon-more-outline"></i></div>
+            </template>
+          </el-table-column>
         </el-table>
       </section>
       <!-- 分页组件 -->
-      <section class="pagination-ct">
+      <section class="pagination-ct bg-white border-radiu-bottom-5">
         <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="1" :page-sizes="[10, 200, 300, 400]"
           :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400">
         </el-pagination>
+      </section>
       </section>
     </section>
     <!-- 模态框容器 -->
@@ -264,7 +294,7 @@
   import axios from 'axios'
   export default {
     components: {
-      navTop
+
     },
     data() {
       return {
@@ -275,8 +305,8 @@
           { name: '师生档案', iconClass: 'tsFiles' },
           { name: '课程管理', iconClass: 'courseManage' },
           { name: '班级管理', iconClass: 'classManage' },
-          { name: '收支管理', iconClass: 'expenseManage' },
-          { name: '微网管理', iconClass: 'piconectManage' },
+          // { name: '收支管理', iconClass: 'expenseManage' },
+          // { name: '微网管理', iconClass: 'piconectManage' },
           { name: '服务商店', iconClass: 'serviceStore' }
         ],
         options: [{ value: 1, label: 'option1' }, { value: 2, label: 'option1' }, { value: 3, label: 'option1' }, { value: 4, label: 'option1' }, { value: 5, label: 'option1' }],
@@ -320,7 +350,7 @@
       function calDomWH() {
         var pageW = document.body.clientWidth || document.documentElement.clientWidth;
         var pageH = document.body.clientHeight || document.documentElement.clientHeight;
-        vm.tableHeight = pageH - (60 + 50 + 60 + 50) + '';
+        vm.tableHeight = pageH - (60 + 50 + 60 + 50+30) + '';
         var rightPartW = pageW - 250;
         document.querySelector(".managepage .right-part-content").style.width = rightPartW + 'px';
       }
@@ -337,7 +367,14 @@
     //method
     methods: {
       handleSizeChange() { },
-      handleCurrentChange() { }
+      handleCurrentChange() { },
+      handleMore(){},
+      onSelectedTableRow(row,event){
+
+      },
+      handleRowSelected(){
+
+      }
     },
     watch: {},
     //computed
