@@ -1,13 +1,16 @@
 <template>
   <div class="content-wrapper managepage">
     <section class="left-part-nav">
+      <div class="collapse-btn">
+        <div class="collapse-icon-ct"></div>
+      </div>
       <section class="logo">
         <div class="img-ct"></div>
         <br>
         <div class="name-ct">Element样例测试中心</div>
       </section>
       <section class="menu-ct">
-        <div class="menu-item" v-for="item in leftMenuList">
+        <div class="menu-item" :class="{'selected':item.name=='师生档案'}" v-for="item in leftMenuList">
           <div class="item-icon-ct" :class="[item.iconClass]">
           </div>
           <div class="item-text-ct">{{item.name}}</div>
@@ -346,6 +349,12 @@
           console.log(error);
         })
       }())
+      //初始化左侧菜单导航 lmps:left-menu-perfect-scrollbar
+      const lmps = new vm.perfectScrollBar('.left-part-nav', {
+  wheelSpeed: 2,
+  wheelPropagation: true,
+  minScrollbarLength: 20
+});
       //计算右侧内容框的宽度
       function calDomWH() {
         var pageW = document.body.clientWidth || document.documentElement.clientWidth;
@@ -353,8 +362,13 @@
         vm.tableHeight = pageH - (60 + 50 + 60 + 50+30) + '';
         var rightPartW = pageW - 250;
         document.querySelector(".managepage .right-part-content").style.width = rightPartW + 'px';
+        document.querySelector(".left-part-nav").style.height=pageH+'px';
       }
       calDomWH();
+      window.onresize=function(){
+         calDomWH();
+         lmps.update();
+      };
     },
     //when data changes
     beforeUpdate() { },

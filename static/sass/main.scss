@@ -658,6 +658,23 @@ footer {
     flex: 0 0 250px;
     position: relative;
     background:rgba(28,31,40,1);
+    box-shadow: 1px 0 15px 1px rgba(0, 0, 0, .5);
+    position: relative;
+    z-index: 3;
+    .collapse-btn{
+      line-height: 60px;
+      position: relative;
+      text-align: right;
+      .collapse-icon-ct{
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        background-image:url('../images/manage/收起.png');
+        background-size:cover;
+        vertical-align: middle;
+        margin-right:17px;
+      }
+    }
     .logo{
       text-align: center;
       margin-top: 15px;
@@ -682,9 +699,14 @@ footer {
           background-color: rgba(58, 62, 73, 0.75);
           cursor: pointer;
         }
+        &.selected{
+          background-color: rgba(58, 62, 73, 0.75);
+        }
         text-align: center;
         line-height: 60px;
         font-size: 18px;
+        margin: 20px 30px;
+        border-radius: 30px;
         div{
           display: inline-block;
           vertical-align: middle;
@@ -740,7 +762,6 @@ footer {
              color: white;
              font-weight: bold;
              border-radius: 5px;
-             display: none;
            }
         }
       }
@@ -766,13 +787,16 @@ footer {
       .right-part{
         display: flex;
         .right-part-item{
-          cursor: pointer;
-          position: relative;
           &:hover{
             background-color:rgba(211, 211, 211, .15);
           }
+          cursor: pointer;
+          position: relative;
           padding: 0 20px;
           border-left:1px solid rgba(211, 211, 211, .15);
+          i{
+            font-size: 20px;
+          }
           .manage-bell-count{
             display: inline-block;
             position: absolute;
@@ -856,7 +880,7 @@ footer {
     }
   }
   .add-btn{
-    margin-right:14px;
+    margin-right:18px;
     font-size: 24px;
     cursor: pointer;
     span{
