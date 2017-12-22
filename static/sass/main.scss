@@ -655,7 +655,7 @@ footer {
   flex-flow: row nowrap;
   align-items: stretch;
   .left-part-nav{
-    flex: 0 0 250px;
+    flex: 0 0 200px;
     position: relative;
     background:rgba(28,31,40,1);
     box-shadow: 1px 0 15px 1px rgba(0, 0, 0, .5);
@@ -703,10 +703,10 @@ footer {
           background-color: rgba(58, 62, 73, 0.75);
         }
         text-align: center;
-        line-height: 60px;
-        font-size: 18px;
-        margin: 20px 30px;
-        border-radius: 30px;
+        line-height: 36px;
+        font-size: 14px;
+        margin: 20px 25px;
+        border-radius: 15px;
         div{
           display: inline-block;
           vertical-align: middle;
@@ -830,7 +830,7 @@ footer {
     .dropdown-filter{
       .item{
         width: 140px;
-        margin-left:20px
+        margin-right:20px;
       }
     }
     .count-info{
@@ -951,5 +951,9 @@ footer {
     }
   }
 }
+}
+
+.course-operate-ct .item{
+  margin-right:100px;
 }
 
