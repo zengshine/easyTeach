@@ -137,6 +137,90 @@
         </el-pagination>
       </section>
     </section>
+        <!-- 模态框容器 -->
+    <section>
+      <el-dialog title="信息录入" :visible.sync="infoFormVisible">
+        <el-form class="infoInputForm" :model="infoForm" :inline="true" :label-width="formLabelWidth" size="mini" label-position="top">
+          <el-form-item style="width:100%;" label="姓名">
+            <el-input v-model="infoForm.name" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item style="width:100%;" label="性别">
+            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
+              <el-option label="区域一" value="shanghai"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="学校">
+            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
+              <el-option label="区域一" value="shanghai"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="年级">
+            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
+              <el-option label="区域一" value="shanghai"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="班级">
+            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
+              <el-option label="区域一" value="shanghai"></el-option>
+            </el-select>
+          </el-form-item>
+          <br>
+          <div class="contacts-ct" v-for="item in infoForm.contacts">
+            <el-form-item label="联系人">
+              <el-input v-model="item.name" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="关系">
+              <el-select v-model="item.relation" placeholder="请选择活动区域">
+                <el-option label="区域一" value="shanghai"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="联系号码">
+              <el-input v-model="item.telNum" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="主联系人" label-position="right">
+              <el-switch v-model="infoForm.birthdayNotify" active-color="#13ce66" inactive-color="#ff4949">
+              </el-switch>
+            </el-form-item>
+            <br>
+            <div class="add-relationship">
+              <span class="add-plus-circle">+</span>添加联系人</div>
+            <br>
+          </div>
+          <br>
+          <el-form-item label="生日">
+            <el-date-picker v-model="infoForm.birthday" type="date" placeholder="选择日期">
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item label="生日提醒">
+            <el-switch v-model="infoForm.birthdayNotify" active-color="#13ce66" inactive-color="#ff4949">
+            </el-switch>
+          </el-form-item>
+          <br>
+          <el-form-item label="家庭地址">
+            <el-input v-model="infoForm.name" auto-complete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="省份">
+            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
+              <el-option label="区域一" value="shanghai"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="市区">
+            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
+              <el-option label="区域一" value="shanghai"></el-option>
+            </el-select>
+          </el-form-item>
+          <br>
+          <el-form-item class="textarea-item" label="备注" width="100%">
+            <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="infoForm.marker">
+            </el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        </div>
+      </el-dialog>
+    </section>
   </div>
 </template>
 
@@ -211,7 +295,6 @@ export default {
       var rightPartW = pageW - 250;
       document.querySelector(".managepage .right-part-content").style.width =
         rightPartW + "px";
-      //document.querySelector(".left-part-nav").style.height=pageH+'px';
     }
     calDomWH();
     window.onresize = function() {

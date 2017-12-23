@@ -10,7 +10,7 @@
         <div class="name-ct">Element样例测试中心</div>
       </section>
       <section class="menu-ct">
-        <div class="menu-item" :class="{'selected':item.name=='师生档案'}" v-for="item in leftMenuList" @click="gotoAddress(item.path)">
+        <div class="menu-item" :class="{'selected':curLeftNavPath===item.path}" v-for="item in leftMenuList" @click="onSelectLeftNavItem(item.path)">
           <div class="item-icon-ct" :class="[item.iconClass]">
           </div>
           <div class="item-text-ct">{{item.name}}</div>
@@ -66,90 +66,6 @@
       </section>
        <router-view></router-view>
     </section>
-    <!-- 模态框容器 -->
-    <section>
-      <el-dialog title="信息录入" :visible.sync="infoFormVisible">
-        <el-form class="infoInputForm" :model="infoForm" :inline="true" :label-width="formLabelWidth" size="mini" label-position="top">
-          <el-form-item style="width:100%;" label="姓名">
-            <el-input v-model="infoForm.name" auto-complete="off"></el-input>
-          </el-form-item>
-          <el-form-item style="width:100%;" label="性别">
-            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="学校">
-            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="年级">
-            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="班级">
-            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-            </el-select>
-          </el-form-item>
-          <br>
-          <div class="contacts-ct" v-for="item in infoForm.contacts">
-            <el-form-item label="联系人">
-              <el-input v-model="item.name" auto-complete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="关系">
-              <el-select v-model="item.relation" placeholder="请选择活动区域">
-                <el-option label="区域一" value="shanghai"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="联系号码">
-              <el-input v-model="item.telNum" auto-complete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="主联系人" label-position="right">
-              <el-switch v-model="infoForm.birthdayNotify" active-color="#13ce66" inactive-color="#ff4949">
-              </el-switch>
-            </el-form-item>
-            <br>
-            <div class="add-relationship">
-              <span class="add-plus-circle">+</span>添加联系人</div>
-            <br>
-          </div>
-          <br>
-          <el-form-item label="生日">
-            <el-date-picker v-model="infoForm.birthday" type="date" placeholder="选择日期">
-            </el-date-picker>
-          </el-form-item>
-          <el-form-item label="生日提醒">
-            <el-switch v-model="infoForm.birthdayNotify" active-color="#13ce66" inactive-color="#ff4949">
-            </el-switch>
-          </el-form-item>
-          <br>
-          <el-form-item label="家庭地址">
-            <el-input v-model="infoForm.name" auto-complete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="省份">
-            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="市区">
-            <el-select v-model="infoForm.gender" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-            </el-select>
-          </el-form-item>
-          <br>
-          <el-form-item class="textarea-item" label="备注" width="100%">
-            <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="infoForm.marker">
-            </el-input>
-          </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-        </div>
-      </el-dialog>
-    </section>
   </div>
 </template>
 
@@ -168,36 +84,13 @@ export default {
       isNavFixed: false,
       leftMenuList: [
         { name: "工作窗口", iconClass: "workWindows",path:'/infoInput' },
-        { name: "师生档案", iconClass: "tsFiles",path:'/' },
+        { name: "师生档案", iconClass: "tsFiles",path:'' },
         { name: "课程管理", iconClass: "courseManage",path:'/courseManage' },
-        { name: "班级管理", iconClass: "classManage" },
-        { name: "服务商店", iconClass: "serviceStore" }
+        { name: "班级管理", iconClass: "classManage",path:'' },
+        { name: "服务商店", iconClass: "serviceStore",path:'' }
       ],
-      options: [
-        { value: 1, label: "option1" },
-        { value: 2, label: "option1" },
-        { value: 3, label: "option1" },
-        { value: 4, label: "option1" },
-        { value: 5, label: "option1" }
-      ],
-      tableData: [],
-      tableHeight: "1000",
       infoFormVisible: false,
-      infoForm: {
-        name: "",
-        gender: "",
-        school: "",
-        grade: "",
-        class: "",
-        contacts: [{ name: "", relation: "", telNum: "" }],
-        birthday: "",
-        birthdayNotify: true,
-        address: "",
-        province: "",
-        city: "",
-        marker: ""
-      },
-      formLabelWidth: "80px"
+      curLeftNavPath:'/infoInput'
     };
   },
   //Init Events&lifecycle ->
@@ -253,6 +146,14 @@ export default {
   destroyed() {},
   //method
   methods: {
+    onSelectLeftNavItem(path){
+      if(!path){
+      return false;
+     }
+     var vm=this;
+     vm.curLeftNavPath=path;
+     vm.gotoAddress(path)
+    },
     gotoAddress(path){
      var vm=this;
      vm.$router.push(path);

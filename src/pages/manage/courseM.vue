@@ -14,11 +14,6 @@
         </div>
       </div>
       <div class="right-part">
-        <div class="add-btn" @click="infoFormVisible=true">
-          <span>
-            <i class="el-icon-circle-plus-outline"></i>
-          </span>
-        </div>
       </div>
     </section>
     <!-- 列表容器 -->
@@ -49,14 +44,18 @@
           </div>
         </div>
         <div class="right-part count-info">
-
+        <div class="add-btn" @click="infoFormVisible=true">
+          <span>
+            <i class="el-icon-circle-plus-outline"></i>
+          </span>
+        </div>
         </div>
       </section>
       <!-- 排序，及其他操作 -->
       <section class="left-right-inline-layout filter-ct solid-divider height-40 bg-white padd-h-20">
         <div class="left-part course-operate-ct">
           <div class="item">
-            <el-checkbox v-model="value" @change="onToggleSiteMarkers">课程</el-checkbox>
+            <el-checkbox v-model="value">课程</el-checkbox>
           </div>
           <div class="item">人气
             <i class="el-icon-caret-bottom"></i>
@@ -73,7 +72,21 @@
       </section>
       <!-- 课程内容列表 -->
       <section class="course-list-ct">
-
+       <div class="course-list-wrapper flow-list">
+         <div class="item flow-list" v-for="course in courseList">
+          <div class="course-detail-left in-b">
+            <div class="course-des">阅读理解与写作技巧提升，通过提升学生的自主学习能力</div>
+          </div>
+          <div class="course-detail-right in-b">
+             <div class="course-name"><span>三年级语文基础课</span>&nbsp&nbsp<el-checkbox v-model="value"></el-checkbox></div>
+              <div class="course-category"><span class="type">班组课程</span><span class="count"><i class="fa fa-users"></i>125</span></div>
+              <div class="course-evaluation"> <el-rate v-model="value"></el-rate><span class="text">5星好评<i class="fa fa-info-circle"></i></span></div>
+              <div class="course-capcity_periods_price"><span>班级：</span><span>6人小班</span></div>
+              <div class="course-capcity_periods_price"><span>课时：</span><span>30节(2小时/节)</span></div>
+              <div class="course-capcity_periods_price"><span>价格：</span><span>599元</span></div>
+          </div>
+         </div>
+       </div>
       </section>
     </section>
   </div>
@@ -87,32 +100,14 @@ export default {
   data() {
     return {
       value: "",
-      isNavFixed: false,
-      options: [
+      courseList:[1,2,3,4,5,6],
+       options: [
         { value: 1, label: "option1" },
         { value: 2, label: "option1" },
         { value: 3, label: "option1" },
         { value: 4, label: "option1" },
         { value: 5, label: "option1" }
       ],
-      tableData: [],
-      tableHeight: "1000",
-      infoFormVisible: false,
-      infoForm: {
-        name: "",
-        gender: "",
-        school: "",
-        grade: "",
-        class: "",
-        contacts: [{ name: "", relation: "", telNum: "" }],
-        birthday: "",
-        birthdayNotify: true,
-        address: "",
-        province: "",
-        city: "",
-        marker: ""
-      },
-      formLabelWidth: "80px"
     };
   },
   //Init Events&lifecycle ->
@@ -144,8 +139,8 @@ export default {
     function calDomWH() {
       var pageH =
         document.body.clientHeight || document.documentElement.clientHeight;
-      var contentH = pageH - (50 + 50 + 55 + 50 + 40 + 30);
-      document.getElementsByClassName(".course-list-ct")[0].style.height =
+      var contentH = pageH - (50 + 50 + 55  + 40 + 30);
+      document.getElementsByClassName("course-list-ct")[0].style.height =
         contentH + "px";
     }
     calDomWH();
