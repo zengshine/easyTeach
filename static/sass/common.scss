@@ -1,3 +1,17 @@
+//定义滚动条样式
+::-webkit-scrollbar{
+  width:6px;
+}
+::-webkit-scrollbar-track-piece{
+  background:none;
+}
+::-webkit-scrollbar-thumb {
+  background:#DCD9DE;
+  border-radius:6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background:#EAE6EA;
+}
 //定位，显示
 .flow-list{
   display: flex;

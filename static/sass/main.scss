@@ -706,7 +706,7 @@ footer {
         line-height: 36px;
         font-size: 14px;
         margin: 20px 25px;
-        border-radius: 15px;
+        border-radius: 10px;
         div{
           display: inline-block;
           vertical-align: middle;
@@ -806,7 +806,7 @@ footer {
             height: 15px;
             line-height: 15px;
             padding: 0px 5px;
-            top: 10px;
+            top: 5px;
             right: 5px;
             font-size: 10px;
           }
@@ -955,11 +955,12 @@ footer {
 }
 // 课程管理页面
 .course-list-wrapper{
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap:wrap;
 }
 .course-list-wrapper .item{
   flex: 0 0 390px;
+  min-width: 30%;
   height: 130px;
   margin: 30px 15px;
 }
