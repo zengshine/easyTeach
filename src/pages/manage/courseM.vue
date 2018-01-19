@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="right-part count-info">
-        <div class="add-btn" @click="infoFormVisible=true">
+        <div class="self-btn" @click="infoFormVisible=true">
           <span>
             <i class="el-icon-circle-plus-outline"></i>
           </span>
@@ -65,8 +65,8 @@
           </div>
         </div>
         <div class="right-part count-info">
-          <div class="item">
-            <i class="el-icon-more"></i>
+          <div class="self-btn">
+           <span><i class="el-icon-more"></i></span>
           </div>
         </div>
       </section>
@@ -86,6 +86,8 @@
               <div class="course-capcity_periods_price"><span>价格：</span><span>599元</span></div>
           </div>
          </div>
+         <div class="flex-item-3-empty"></div>
+         <div class="flex-item-3-empty"></div>
        </div>
       </section>
     </section>
@@ -100,7 +102,7 @@ export default {
   data() {
     return {
       value: "",
-      courseList:[1,2,3,4,5,6],
+      courseList:[1,2,3,4,5,6,7,8],
        options: [
         { value: 1, label: "option1" },
         { value: 2, label: "option1" },
@@ -128,26 +130,26 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-    })();
+    })()
     //初始化左侧菜单导航 lmps:left-menu-perfect-scrollbar
     const lmps = new vm.perfectScrollBar(".left-part-nav", {
       wheelSpeed: 2,
       wheelPropagation: true,
       minScrollbarLength: 20
-    });
+    })
     //计算右侧内容框的宽度
     function calDomWH() {
       var pageH =
         document.body.clientHeight || document.documentElement.clientHeight;
-      var contentH = pageH - (50 + 50 + 55  + 40 + 30);
+      var contentH = pageH - (50 + 50 + 55  + 40 + 40)
       document.getElementsByClassName("course-list-ct")[0].style.height =
-        contentH + "px";
+        contentH + "px"
     }
     calDomWH();
     window.onresize = function() {
-      calDomWH();
-      lmps.update();
-    };
+      setTimeout(function(){ calDomWH()},0)
+      lmps.update()
+    }
   },
   //when data changes
   beforeUpdate() {},

@@ -11,6 +11,7 @@
       </section>
       <section class="menu-ct">
         <div class="menu-item" :class="{'selected':curLeftNavPath===item.path}" v-for="item in leftMenuList" @click="onSelectLeftNavItem(item.path)">
+          <div class="item-select-decorate"></div>
           <div class="item-icon-ct" :class="[item.iconClass]">
           </div>
           <div class="item-text-ct">{{item.name}}</div>
@@ -35,9 +36,14 @@
       </section>
     </section>
     <section class="right-part-content">
-      <section class="left-right-inline-layout shadow-divider height-50 bg-white ps-rel">
+      <section class="left-right-inline-layout shadow-divider height-50 bg-white ps-rel pageHead">
         <div class="left-part"></div>
         <div class="right-part">
+          <div class="right-part-item">
+            <span>
+              <i class="fa fa-search-plus"></i>
+            </span>
+          </div>
           <div class="right-part-item">
             <span>
               <i class="fa fa-commenting-o"></i>
@@ -83,8 +89,8 @@ export default {
       value: "",
       isNavFixed: false,
       leftMenuList: [
-        { name: "工作窗口", iconClass: "workWindows",path:'/infoInput' },
-        { name: "师生档案", iconClass: "tsFiles",path:'' },
+        { name: "工作窗口", iconClass: "workWindows",path:'' },
+        { name: "师生管理", iconClass: "tsFiles",path:'/infoInput' },
         { name: "课程管理", iconClass: "courseManage",path:'/courseManage' },
         { name: "班级管理", iconClass: "classManage",path:'' },
         { name: "服务商店", iconClass: "serviceStore",path:'' }

@@ -2,7 +2,7 @@
   <div>
     <!-- 维度切换 -->
     <section class="left-right-inline-layout solid-divider height-50 bg-white">
-      <div class="left-part info-dimension">
+      <div class="left-part info-dimension ml-20">
         <div class="item selected">
           <span>学生</span>
         </div>
@@ -14,18 +14,13 @@
         </div>
       </div>
       <div class="right-part">
-        <div class="add-btn" @click="infoFormVisible=true">
-          <span>
-            <i class="el-icon-circle-plus-outline"></i>
-          </span>
-        </div>
       </div>
     </section>
     <!-- 列表容器 -->
     <section class="dimension-ct">
       <!-- 过滤容器 -->
-      <section class="left-right-inline-layout filter-ct solid-divider height-55 bg-white padd-h-20">
-        <div class="left-part dropdown-filter">
+      <section class="left-right-inline-layout filter-ct solid-divider height-55 bg-white">
+        <div class="left-part dropdown-filter ml-15">
           <div class="item">
             <el-select v-model="value" placeholder="请选择年级" size="small">
               <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
@@ -48,8 +43,14 @@
             <el-input placeholder="姓名/电话" size="small" prefix-icon="el-icon-search" v-model="value"></el-input>
           </div>
         </div>
-        <div class="right-part count-info">
-          <div class="item">
+        <div class="right-part count-info mr-30">
+          <div class="self-btn" @click="infoFormVisible=true">
+          <span>
+            <i class="el-icon-circle-plus-outline"></i>
+          </span>
+        </div>
+        <div style="display:none">
+                    <div class="item">
             <div class="number">775</div>
             <div class="des">
               <span>总人数</span>
@@ -80,10 +81,11 @@
             </div>
           </div>
         </div>
+        </div>
       </section>
       <!-- 表格内容 -->
       <section class="table-ct bg-white">
-        <el-table :data="tableData" :max-height="tableHeight" @select="onSelectedTableRow" @row-click="handleRowSelected">
+        <el-table  class="infoInput-table" :data="tableData"  :height="tableHeight" @select="onSelectedTableRow" @row-click="handleRowSelected">
           <el-table-column type="selection" width="55">
           </el-table-column>
           <el-table-column label="姓名" width="180">
@@ -91,13 +93,14 @@
               <div class="table-column">
                 <div class="name-img-ct">
                   <div>
-                    <img src="../../../static/images/manage/男生-预微信头像.png" />
+                    <img class="profile-pic" src="../../../static/images/manage/男生-预微信头像.png" />
+                    <img class="sex-pic" src="../../../static/images/manage/icon_性别男生.png">
                   </div>
                 </div>
                 <div class="name-info-ct">
                   <span class="top">{{scope.row.name}}</span>
                   <br>
-                  <span class="bottom">家长：刘先生</span>
+                  <span class="bottom d-hidden">家长：刘先生</span>
                 </div>
               </div>
             </template>
@@ -107,7 +110,7 @@
               <div>{{scope.row.tel}}</div>
             </template>
           </el-table-column>
-          <el-table-column label="年级" width="120">
+          <el-table-column sortable label="年级" width="120">
             <template slot-scope="scope">
               <div>{{scope.row.grade}}</div>
             </template>
@@ -118,6 +121,7 @@
                 <span class="class-item" v-for="item in scope.row.classes">
                   <span>{{item.name}}</span>
                   <span>{{item.count}}</span>
+                  <i class="fa fa-info-circle"></i>
                 </span>
               </div>
             </template>
@@ -241,7 +245,7 @@ export default {
         { value: 5, label: "option1" }
       ],
       tableData: [],
-      tableHeight: "1000",
+      tableHeight: 500,
       infoFormVisible: false,
       infoForm: {
         name: "",
@@ -281,25 +285,26 @@ export default {
     })();
     //初始化左侧菜单导航 lmps:left-menu-perfect-scrollbar
     const lmps = new vm.perfectScrollBar(".left-part-nav", {
-      wheelSpeed: 2,
+      wheelSpeed: 1,
       wheelPropagation: true,
       minScrollbarLength: 20
     });
     //计算右侧内容框的宽度
     function calDomWH() {
-      var pageW =
-        document.body.clientWidth || document.documentElement.clientWidth;
-      var pageH =
-        document.body.clientHeight || document.documentElement.clientHeight;
-      vm.tableHeight = pageH - (50 + 50 + 60 + 50 + 30) + "";
-      var rightPartW = pageW - 250;
-      document.querySelector(".managepage .right-part-content").style.width =
-        rightPartW + "px";
+      // var pageW =
+      //   document.body.clientWidth || document.documentElement.clientWidth;
+      // var pageH =
+      //   document.body.clientHeight || document.documentElement.clientHeight;
+      // vm.tableHeight = pageH - (50 + 50 + 60 + 50 + 40)
+      // setTimeout(function(){
+      //   document.getElementsByClassName("infoInput-table")[0].style.height=vm.tableHeight+'px'
+      // },0)
+    vm.tableHeight=vm.commom.calDomHeight(".infoInput-table",95,".managepage",".pageHead",".filter-ct",".pagination-ct")
     }
     calDomWH();
     window.onresize = function() {
-      calDomWH();
-      lmps.update();
+      setTimeout(function(){calDomWH()},0)
+      lmps.update()
     };
   },
   //when data changes

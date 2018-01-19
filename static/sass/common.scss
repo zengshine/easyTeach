@@ -1,3 +1,11 @@
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  font-family: PingFang SC;
+}
+
 //定义滚动条样式
 ::-webkit-scrollbar{
   width:6px;
@@ -20,6 +28,10 @@
 .in-b{
   display: inline-block;
 }
+.flex-item-3-empty{
+  min-width: 30%;
+  height: 0;
+}
 //位置
 .ps-rel{
   position: relative;
@@ -40,6 +52,15 @@
   height: 40px;
 }
 //边距
+.ml-15{
+  margin-left:15px;
+}
+.ml-20{
+  margin-left:20px;
+}
+.mr-30{
+  margin-right:30px;
+}
 .padd-h-20{
   padding: 0 20px;
 }
@@ -58,7 +79,7 @@
   background-color:white;
 }
 //其它
-.hidden{
+.d-hidden{
   display:none;
 }
 .ellips-txt{

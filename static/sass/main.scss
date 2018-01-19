@@ -2,7 +2,7 @@
 @import '../sass/adapter.scss';
 @import '../sass/common.scss';
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'PingFang SC','Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -655,7 +655,7 @@ footer {
   flex-flow: row nowrap;
   align-items: stretch;
   .left-part-nav{
-    flex: 0 0 200px;
+    flex: 0 0 185px;
     position: relative;
     background:rgba(28,31,40,1);
     box-shadow: 1px 0 15px 1px rgba(0, 0, 0, .5);
@@ -687,9 +687,10 @@ footer {
         background-image:url("../../static/images/manage/教育机构logo.png")
       }
       .name-ct{
-        color: white;
-        font-size: 16px;
         padding: 10px 0px;
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
       }
     }
     .menu-ct{
@@ -701,18 +702,27 @@ footer {
         }
         &.selected{
           background-color: rgba(58, 62, 73, 0.75);
+          .item-select-decorate{
+            background: rgb(77, 161, 255)
+          }
         }
         text-align: center;
         line-height: 36px;
         font-size: 14px;
-        margin: 20px 25px;
+        margin: 20px 20px;
         border-radius: 10px;
         div{
           display: inline-block;
           vertical-align: middle;
         }
+        .item-select-decorate{
+          width: 9px;
+          height: 9px;
+          margin-right:8px;
+          border-radius:50%;
+        }
         .item-icon-ct{
-          margin-right:10px;
+          margin-right:8px;
           width: 23px;
           height: 22px;
           display: inline-block;
@@ -721,6 +731,8 @@ footer {
           background-repeat:no-repeat;
         }
         .item-text-ct{
+          font-weight: bold;
+          letter-spacing: 2px;
           color: rgba(148,155,175,1);
         }
       }
@@ -775,7 +787,7 @@ footer {
   }
   .right-part-content{
     flex: 1 1;
-    background: rgba(211, 211, 211, .55);
+    background: #edf1f2;
     .left-right-inline-layout{
       display: flex;
       flex-flow: row nowrap;
@@ -822,8 +834,8 @@ footer {
     }
   }
   .dimension-ct{
-    margin: 15px;
-    border-radius: 10px;
+    margin: 20px;
+    border-radius: 12px;
     background: rgba(255,255,255,1);
   }
   .filter-ct{
@@ -852,7 +864,7 @@ footer {
   }
   .info-dimension{
     border-radius:6px;
-    border:1px solid lightgray;
+    border:1px solid rgba(211, 211, 211, .7);
     box-sizing: border-box;
     margin-left:15px;
     margin-top:3px;//无法居中...
@@ -875,14 +887,13 @@ footer {
         color: black;
       }
       cursor: pointer;
-      height: 32px;
-      line-height: 32px;
-      padding: 0 15px;
+      line-height: 30px;
+      padding: 0 35px;
     }
   }
-  .add-btn{
-    margin-right:18px;
+  .self-btn{
     font-size: 24px;
+    color: #888e9a;
     cursor: pointer;
     span{
       &:hover{
@@ -904,28 +915,37 @@ footer {
         vertical-align: middle;
       }
       .name-img-ct{
-         img{
+        position: relative;
+         img.profile-pic{
           width: 35px;
           height: 35px;
           border-radius: 50%;
          }
+         img.sex-pic{
+          position: absolute;
+          width: 13px;
+          height: 13px;
+          bottom: 0px;
+          right: 0px;
+         }
       }
       .name-info-ct{
         .top{
-          font-size: 14px;
-          font-weight: bold;
+          margin-left:7px;
         }
         .bottom{
           font-size: 12px;
         }
       }
       .class-item{
-        border: 1px solid lightgray;
         display: inline-block;
         padding: 0 2px;
-        margin:5px 2px;
+        margin:5px 20px 5px 0px;
         border-radius:3px;
         font-size: 12px;
+        i{
+          color: #f7615f;
+        }
       }
     }
   }
@@ -954,6 +974,12 @@ footer {
 }
 }
 // 课程管理页面
+.course-operate-ct .item{
+  margin-right:50px;
+}
+.course-list-ct{
+  overflow-y:auto;
+}
 .course-list-wrapper{
   justify-content: space-around;
   flex-wrap:wrap;
