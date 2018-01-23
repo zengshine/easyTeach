@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 维度切换 -->
-    <section class="left-right-inline-layout solid-divider height-50 bg-white">
+    <section class="dimension-switch-ct left-right-inline-layout solid-divider height-50 bg-white">
       <div class="left-part info-dimension">
         <div class="item selected">
           <span>学生</span>
@@ -52,7 +52,7 @@
         </div>
       </section>
       <!-- 排序，及其他操作 -->
-      <section class="left-right-inline-layout filter-ct solid-divider height-40 bg-white padd-h-20">
+      <section class="left-right-inline-layout action-bar solid-divider height-40 bg-white padd-h-20">
         <div class="left-part course-operate-ct">
           <div class="item">
             <el-checkbox v-model="value">课程</el-checkbox>
@@ -139,11 +139,15 @@ export default {
     })
     //计算右侧内容框的宽度
     function calDomWH() {
-      var pageH =
-        document.body.clientHeight || document.documentElement.clientHeight;
-      var contentH = pageH - (50 + 50 + 55  + 40 + 40)
-      document.getElementsByClassName("course-list-ct")[0].style.height =
-        contentH + "px"
+        vm.commom.calDomHeight(
+        ".course-list-ct",
+        35,
+        ".managepage",
+        ".pageHead",
+        ".dimension-switch-ct",
+        ".filter-ct",
+        ".action-bar",
+      )
     }
     calDomWH();
     window.onresize = function() {

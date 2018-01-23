@@ -60,9 +60,13 @@ div.el-loading-mask{
   overflow-x:hidden;
 }
 .infoInput-table td{
-  padding: 8px 0;
+  padding: 5px 0;
   font-size: 12px;
+}
+.infoInput-table th{
+  padding: 10px 0;
 }
 .el-input--small .el-input__inner{
   height: 30px;
+  vertical-align: text-top;
 }

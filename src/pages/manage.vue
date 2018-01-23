@@ -17,8 +17,8 @@
           <div class="item-text-ct">{{item.name}}</div>
         </div>
       </section>
-      <section class="page-tip-ct hidden">
-        <div class="manage-page-tips">
+      <section class="page-tip-ct">
+        <div class="manage-page-tips hidden">
           <span class="tips-close-btn">
             <i class="el-icon-error"></i>
           </span>

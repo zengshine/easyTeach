@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 维度切换 -->
-    <section class="left-right-inline-layout solid-divider height-50 bg-white">
+    <section class="dimension-switch-ct left-right-inline-layout solid-divider height-50 bg-white">
       <div class="left-part info-dimension ml-20">
         <div class="item selected">
           <span>学生</span>
@@ -19,7 +19,7 @@
     <!-- 列表容器 -->
     <section class="dimension-ct">
       <!-- 过滤容器 -->
-      <section class="left-right-inline-layout filter-ct solid-divider height-55 bg-white">
+      <section class="left-right-inline-layout filter-ct solid-divider height-65 bg-white">
         <div class="left-part dropdown-filter ml-15">
           <div class="item">
             <el-select v-model="value" placeholder="请选择年级" size="small">
@@ -45,47 +45,47 @@
         </div>
         <div class="right-part count-info mr-30">
           <div class="self-btn" @click="infoFormVisible=true">
-          <span>
-            <i class="el-icon-circle-plus-outline"></i>
-          </span>
-        </div>
-        <div style="display:none">
-                    <div class="item">
-            <div class="number">775</div>
-            <div class="des">
-              <span>总人数</span>
+            <span>
+              <i class="el-icon-circle-plus-outline"></i>
+            </span>
+          </div>
+          <div style="display:none">
+            <div class="item">
+              <div class="number">775</div>
+              <div class="des">
+                <span>总人数</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="number">175</div>
+              <div class="des">
+                <span>在读人数</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="number">275</div>
+              <div class="des">
+                <span>结课人数</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="number">105</div>
+              <div class="des">
+                <span>试听人数</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="number">375</div>
+              <div class="des">
+                <span>流失人数</span>
+              </div>
             </div>
           </div>
-          <div class="item">
-            <div class="number">175</div>
-            <div class="des">
-              <span>在读人数</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="number">275</div>
-            <div class="des">
-              <span>结课人数</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="number">105</div>
-            <div class="des">
-              <span>试听人数</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="number">375</div>
-            <div class="des">
-              <span>流失人数</span>
-            </div>
-          </div>
-        </div>
         </div>
       </section>
       <!-- 表格内容 -->
       <section class="table-ct bg-white">
-        <el-table  class="infoInput-table" :data="tableData"  :height="tableHeight" @select="onSelectedTableRow" @row-click="handleRowSelected">
+        <el-table class="infoInput-table" :data="tableData" :height="tableHeight" @select="onSelectedTableRow" @row-click="handleRowSelected">
           <el-table-column type="selection" width="55">
           </el-table-column>
           <el-table-column label="姓名" width="180">
@@ -141,7 +141,7 @@
         </el-pagination>
       </section>
     </section>
-        <!-- 模态框容器 -->
+    <!-- 模态框容器 -->
     <section>
       <el-dialog title="信息录入" :visible.sync="infoFormVisible">
         <el-form class="infoInputForm" :model="infoForm" :inline="true" :label-width="formLabelWidth" size="mini" label-position="top">
@@ -291,20 +291,23 @@ export default {
     });
     //计算右侧内容框的宽度
     function calDomWH() {
-      // var pageW =
-      //   document.body.clientWidth || document.documentElement.clientWidth;
-      // var pageH =
-      //   document.body.clientHeight || document.documentElement.clientHeight;
-      // vm.tableHeight = pageH - (50 + 50 + 60 + 50 + 40)
-      // setTimeout(function(){
-      //   document.getElementsByClassName("infoInput-table")[0].style.height=vm.tableHeight+'px'
-      // },0)
-    vm.tableHeight=vm.commom.calDomHeight(".infoInput-table",95,".managepage",".pageHead",".filter-ct",".pagination-ct")
+      //30是内容外边距
+      vm.tableHeight = vm.commom.calDomHeight(
+        ".infoInput-table",
+        35,
+        ".managepage",
+        ".pageHead",
+        ".dimension-switch-ct",
+        ".filter-ct",
+        ".pagination-ct"
+      )
     }
     calDomWH();
     window.onresize = function() {
-      setTimeout(function(){calDomWH()},0)
-      lmps.update()
+      setTimeout(function() {
+        calDomWH();
+      }, 0);
+      lmps.update();
     };
   },
   //when data changes
