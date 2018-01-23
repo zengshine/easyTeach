@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- 维度切换 -->
-    <section class="dimension-switch-ct left-right-inline-layout solid-divider height-50 bg-white">
-      <div class="left-part info-dimension ml-20">
+    <section class="dimension-switch-ct left-right-inline-layout solid-divider height-45 bg-white">
+      <div class="left-part info-dimension ml-30">
         <div class="item selected">
           <span>学生</span>
         </div>
@@ -86,9 +86,9 @@
       <!-- 表格内容 -->
       <section class="table-ct bg-white">
         <el-table class="infoInput-table" :data="tableData" :height="tableHeight" @select="onSelectedTableRow" @row-click="handleRowSelected">
-          <el-table-column type="selection" width="55">
+          <el-table-column type="selection" width="42">
           </el-table-column>
-          <el-table-column label="姓名" width="180">
+          <el-table-column label="姓名" width="98">
             <template class="table-checkbox" slot-scope="scope">
               <div class="table-column">
                 <div class="name-img-ct">
@@ -105,12 +105,12 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="联系电话" width="160">
+          <el-table-column label="联系电话" width="130">
             <template slot-scope="scope">
               <div>{{scope.row.tel}}</div>
             </template>
           </el-table-column>
-          <el-table-column sortable label="年级" width="120">
+          <el-table-column sortable label="年级" width="80">
             <template slot-scope="scope">
               <div>{{scope.row.grade}}</div>
             </template>

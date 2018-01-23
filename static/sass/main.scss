@@ -662,7 +662,7 @@ footer {
     position: relative;
     z-index: 3;
     .collapse-btn{
-      line-height: 60px;
+      line-height: 50px;
       position: relative;
       text-align: right;
       .collapse-icon-ct{
@@ -677,13 +677,14 @@ footer {
     }
     .logo{
       text-align: center;
-      margin-top: 15px;
       div{
         display: inline-block;
+        margin-top:5px;
       }
       .img-ct{
-        width: 74px;
-        height: 74px;
+        width: 55px;
+        height: 55px;
+        background-size:contain;
         background-image:url("../../static/images/manage/教育机构logo.png")
       }
       .name-ct{
@@ -709,7 +710,7 @@ footer {
         text-align: center;
         line-height: 36px;
         font-size: 14px;
-        margin: 20px 20px;
+        margin: 16px 20px;
         border-radius: 10px;
         div{
           display: inline-block;
@@ -863,32 +864,24 @@ footer {
     }
   }
   .info-dimension{
-    border-radius:6px;
-    border:1px solid rgba(211, 211, 211, .7);
     box-sizing: border-box;
-    margin-left:15px;
     margin-top:3px;//无法居中...
     .item{
-      &:first-child{
-        border-radius: 5px 0 0 5px;
-      }
-      &:last-child{
-        border-radius: 0 5px 5px 0;
-      }
-      &:not(:first-child){
-        border-left:1px solid lightgray;
-      }
       &.selected{
-        background: rgb(55, 163, 230);
+        background: #1c1f28;
         color: white;
       }
       &:hover{
-        background: rgba(211, 211, 211, .15);
-        color: black;
+        background: #1c1f28;
+        color: white;
       }
       cursor: pointer;
-      line-height: 30px;
-      padding: 0 35px;
+      width: 42px;
+      line-height: 22px;
+      margin-right: 12px;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 13px;
     }
   }
   .self-btn{

@@ -67,6 +67,9 @@ div.el-loading-mask{
   padding: 7px 0;
 }
 .el-input--small .el-input__inner{
-  height: 30px;
+  height: 26px;
   vertical-align: text-top;
+}
+.el-input--small .el-input__icon{
+  line-height: 26px;
 }
