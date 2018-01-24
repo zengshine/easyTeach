@@ -306,7 +306,7 @@ export default {
     window.onresize = function() {
       setTimeout(function() {
         calDomWH();
-      }, 0);
+      }, 100);
       lmps.update();
     };
   },
