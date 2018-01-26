@@ -136,8 +136,8 @@
         </el-table>
       </section>
       <!-- 分页组件 -->
-      <section class="pagination-ct bg-white border-radiu-bottom-5">
-        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="1" :page-sizes="[10, 200, 300, 400]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400">
+      <section class="pagination-ct bg-white border-radiu-bottom-5 height-60">
+        <el-pagination class="mr-25" @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="1" :page-sizes="[10, 200, 300, 400]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400">
         </el-pagination>
       </section>
     </section>

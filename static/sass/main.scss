@@ -707,20 +707,24 @@ footer {
             background: rgb(77, 161, 255)
           }
         }
+        position: relative;
         text-align: center;
         line-height: 36px;
         font-size: 14px;
         margin: 16px 20px;
-        border-radius: 10px;
+        border-radius: 15px;
         div{
           display: inline-block;
           vertical-align: middle;
         }
         .item-select-decorate{
+          position: absolute;
           width: 9px;
           height: 9px;
-          margin-right:8px;
-          border-radius:50%;
+          top: 50%;
+          left: 7px;
+          margin-top: -4.5px;
+          border-radius: 50%;
         }
         .item-icon-ct{
           margin-right:8px;
@@ -899,7 +903,6 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 50px;
   }
   .table-ct{
     .table-column{
